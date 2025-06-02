@@ -1,0 +1,73 @@
+<mvc:View
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    controllerName="library.controller.Home"
+    height="100%">
+    
+    <Page title="Library Management System" class="sapUiResponsiveMargin">
+        <content>
+            <VBox alignItems="Center" >
+                <!-- Header Section -->
+                <VBox alignItems="Center">
+                    <core:Icon src="sap-icon://library" size="4rem" color="#0070f2" class="sapUiMediumMarginBottom"/>
+                    <Title text="📚 Library Management System" level="H1" class="sapUiLargeMarginBottom" />
+                    <Text text="Welcome to the Digital Library Management Portal" class="sapUiMediumMarginBottom" />
+                </VBox>
+                
+                <!-- Navigation Cards -->
+                <VBox width="500px" class="sapUiMediumMargin">
+                    <Panel class="sapUiMediumMarginBottom">
+                        <headerToolbar>
+                            <Toolbar>
+                                <Title text="Management Modules" level="H3"/>
+                            </Toolbar>
+                        </headerToolbar>
+                        <content>
+                            <VBox class="sapUiMediumMargin">
+                                <!-- Student Management Button -->
+                                <Button 
+                                    text="Student Management" 
+                                    type="Emphasized" 
+                                    width="100%" 
+                                    press="onNavigateToStudents"
+                                    class="sapUiMediumMarginBottom"
+                                    icon="sap-icon://person-placeholder">
+                                    <layoutData>
+                                        <FlexItemData growFactor="1"/>
+                                    </layoutData>
+                                </Button>
+                                
+                                <!-- Book Management Button -->
+                                <Button 
+                                    text="Book Management" 
+                                    type="Emphasized" 
+                                    width="100%" 
+                                    press="onNavigateToBooks"
+                                    class="sapUiMediumMarginBottom"
+                                    icon="sap-icon://course-book">
+                                    <layoutData>
+                                        <FlexItemData growFactor="1"/>
+                                    </layoutData>
+                                </Button>
+                                
+                                <!-- Transaction Management Button -->
+                                <Button 
+                                    text="Transaction Management" 
+                                    type="Emphasized" 
+                                    width="100%" 
+                                    press="onNavigateToTransactions"
+                                    icon="sap-icon://business-objects-experience">
+                                    <layoutData>
+                                        <FlexItemData growFactor="1"/>
+                                    </layoutData>
+                                </Button>
+                            </VBox>
+                        </content>
+                    </Panel>
+                </VBox>
+                
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

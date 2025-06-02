@@ -1,0 +1,43 @@
+<mvc:View
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  displayBlock="true"
+  controllerName="library.controller.CreateBook"
+  xmlns:layout="sap.ui.layout.form"
+  >
+<Page> 
+  <VBox class="sapUiSmallMargin">
+  <Title text="Library Management System" level="H1" titleStyle="H1" class="sapUiSmallMarginBottom" />
+
+<layout:SimpleForm
+    id="libraryForm"
+    title="Issue Book"
+    class="sapUiSmallMargin">
+<VBox>
+<HBox  >
+   <Input id="inputName" placeholder="Enter bookId" value="{form>/BookId}"  change="onInputChange" name="BookId" class="sapUiSmallMarginEnd" />
+
+<Input id="inputBook" placeholder="Enter book title" value="{form>/BookTitle}"  change="onInputChange" name="BookTitle" class="sapUiSmallMarginEnd"/>
+
+<Input id="input" placeholder="Enter book author" value="{form>/Author}"  change="onInputChange" name="Author" />
+
+</HBox>
+<HBox class="sapUiSmallMarginTop" >
+   <Input id="inputName1" placeholder="Enter total copies" value="{form>/TotalCopies}"  change="onInputChange" name="TotalCopies" class="sapUiSmallMarginEnd" />
+
+<Input id="inputBook1" placeholder="Enter available copies" value="{form>/AvailableCopies}"  change="onInputChange" name="AvailableCopies" />
+
+</HBox>
+</VBox>
+  </layout:SimpleForm>
+
+</VBox>
+ <footer >
+    <Toolbar>
+      <ToolbarSpacer />
+      <Button text="Cancel" type="Reject" press="onCancelPress" />
+      <Button text="Save" type="Emphasized" press="onSavePress" class="sapUiLargeMarginEnd" />
+    </Toolbar>
+  </footer>
+  </Page>
+</mvc:View>
