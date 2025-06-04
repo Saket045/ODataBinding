@@ -17,31 +17,71 @@ export default class CreateBook extends Controller {
   public onInit(): void{
     this.oDataModel = new ODataModel("/sap/opu/odata/sap/ZUI_LIBRARY_X_O2");
     (this.getView() as any).setModel(this.formModel,"form");
+    
 
   }
 
-  public onSavePress(): void{
-console.log(this.formModel);
-    const data = this.formModel.getData();
-    console.log(data);
-    let that=this;
-    this.oDataModel.create("/Books",data,{
-        success: function () {
-            MessageToast.show("Book created successfully!");
+//   public onSavePress(): void{
+// console.log(this.formModel);
+//     const data = this.formModel.getData();
+//     console.log(data);
+//     let that=this;
+//     this.oDataModel.create("/Books",data,{
+//         success: function () {
+//             MessageToast.show("Book created successfully!");
+//         },
+//         error: function () {
+//             MessageBox.error("Error while creating book");
+//         }
+//     })
+//     this.formModel.setData({
+//         BookId : "",
+//         BookTitle : "",
+//         Author : "",
+//         TotalCopies : "",
+//         AvailableCopies : ""
+//     });
+    
+//     (this.getOwnerComponent() as any).getRouter().navTo("View1");
+//   }
+
+public async onSavePress(): Promise<void> {
+  console.log(this.formModel);
+  const data = this.formModel.getData();
+  console.log(data);
+
+  try {
+    await new Promise<void>((resolve, reject) => {
+      this.oDataModel.create("/Books", data, {
+        success: () => {
+          MessageToast.show("Book created successfully!");
+          resolve();
         },
-        error: function () {
-            MessageBox.error("Error while creating book");
+        error: (oError:any) => {
+          MessageBox.error("Error while creating book");
+          reject(oError);
         }
-    })
-    this.formModel.setData({
-        BookId : "",
-        BookTitle : "",
-        Author : "",
-        TotalCopies : "",
-        AvailableCopies : ""
+      });
     });
+
+    // Clear form after success
+    this.formModel.setData({
+      BookId: "",
+      BookTitle: "",
+      Author: "",
+      TotalCopies: "",
+      AvailableCopies: ""
+    });
+
+    // Navigate back
     (this.getOwnerComponent() as any).getRouter().navTo("View1");
+
+  } catch (error) {
+    console.error("Create failed:", error);
+    // Optional: show error details
   }
+}
+
 
   public onInputChange(oEvent: any): void {
     const input = oEvent.getSource();

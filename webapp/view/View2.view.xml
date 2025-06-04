@@ -5,7 +5,7 @@
 	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
 	xmlns:smartTable="sap.ui.comp.smarttable"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
-	controllerName="library.controller.View1"
+	controllerName="library.controller.View2"
     height="100%">
 
 	<!-- use this to make the table occupy the available screen height -->
@@ -17,12 +17,19 @@
 				<FlexItemData shrinkFactor="0" />
 			</smartFilterBar:layoutData>
 		</smartFilterBar:SmartFilterBar>
-		<smartTable:SmartTable entitySet="Students"
+		<smartTable:SmartTable entitySet="Students" id="studentTable"
 			smartFilterId="smartFilterBar" enableExport="true" beforeExport="onBeforeExport"
 			useVariantManagement="false" useTablePersonalisation="true" header="Products"
 			showRowCount="true" persistencyKey="SmartTableRefApp_Explored"
 			enableAutoBinding="true" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true"
 			app:preserveDecimals="false">
+			 <smartTable:customToolbar>
+        <OverflowToolbar>
+            <ToolbarSpacer />
+            <Button text="Create" press="onCreatePress" />
+            <Button text="Delete" press="onDeletePress" enabled="true" />
+        </OverflowToolbar>
+    </smartTable:customToolbar>
 			<!-- layout data used to make the table growing but the filter bar fixed -->
 			<smartTable:layoutData>
 				<FlexItemData growFactor="1" baseSize="0%" />

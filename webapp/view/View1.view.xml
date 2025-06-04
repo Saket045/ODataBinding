@@ -6,7 +6,8 @@
 	xmlns:smartTable="sap.ui.comp.smarttable"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 	controllerName="library.controller.View1"
-    height="100%">
+    height="100%"
+	xmlns:table="sap.ui.table">
 
 	<!-- use this to make the table occupy the available screen height -->
 	<VBox fitContainer="true">
@@ -18,16 +19,29 @@
 				<FlexItemData shrinkFactor="0" />
 			</smartFilterBar:layoutData>
 		</smartFilterBar:SmartFilterBar>
-		<smartTable:SmartTable entitySet="Books"
+		<smartTable:SmartTable entitySet="Books" id="bookTable"
 			smartFilterId="smartFilterBar" enableExport="true" beforeExport="onBeforeExport"
 			useVariantManagement="false" useTablePersonalisation="true" header="Books"
 			showRowCount="true" persistencyKey="SmartTableRefApp_Explored"
 			enableAutoBinding="true" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true"
 			app:preserveDecimals="false">
+		<table:Table
+                id="RespTable"
+                selectionMode="Single"
+                rowSelectionChange=""
+                rowActionCount="1"
+               
+            ><table:rowActionTemplate>
+        <table:RowAction id="_IDGenRowAction">
+         <table:RowActionItem id="_IDGenRowActionItem" type="Navigation" press="onEditPage">
+         </table:RowActionItem></table:RowAction>
+            </table:rowActionTemplate>
+            </table:Table>
 			 <smartTable:customToolbar>
         <OverflowToolbar>
             <ToolbarSpacer />
             <Button text="Create" press="onCreatePress" />
+            <Button text="Delete" press="onDeletePress" enabled="true"/>
         </OverflowToolbar>
     </smartTable:customToolbar>
 			<!-- layout data used to make the table growing but the filter bar fixed -->

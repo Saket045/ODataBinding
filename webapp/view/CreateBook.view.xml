@@ -1,38 +1,60 @@
-<mvc:View
-  xmlns:mvc="sap.ui.core.mvc"
-  xmlns="sap.m"
-  displayBlock="true"
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
   controllerName="library.controller.CreateBook"
-  xmlns:layout="sap.ui.layout.form"
   >
-<Page> 
-  <VBox class="sapUiSmallMargin">
-  <Title text="Library Management System" level="H1" titleStyle="H1" class="sapUiSmallMarginBottom" />
-
-<layout:SimpleForm
-    id="libraryForm"
-    title="Issue Book"
-    class="sapUiSmallMargin">
-<VBox>
-<HBox  >
-   <Input id="inputName" placeholder="Enter bookId" value="{form>/BookId}"  change="onInputChange" name="BookId" class="sapUiSmallMarginEnd" />
-
-<Input id="inputBook" placeholder="Enter book title" value="{form>/BookTitle}"  change="onInputChange" name="BookTitle" class="sapUiSmallMarginEnd"/>
-
-<Input id="input" placeholder="Enter book author" value="{form>/Author}"  change="onInputChange" name="Author" />
-
-</HBox>
-<HBox class="sapUiSmallMarginTop" >
-   <Input id="inputName1" placeholder="Enter total copies" value="{form>/TotalCopies}"  change="onInputChange" name="TotalCopies" class="sapUiSmallMarginEnd" />
-
-<Input id="inputBook1" placeholder="Enter available copies" value="{form>/AvailableCopies}"  change="onInputChange" name="AvailableCopies" />
-
-</HBox>
-</VBox>
-  </layout:SimpleForm>
-
-</VBox>
- <footer >
+  <Page >
+	<VBox class="sapUiSmallMargin">
+		<f:Form id="FormChangeColumn_oneGroup234"
+			editable="true">
+			<f:title>
+				<core:Title text="Books" />
+			</f:title>
+			<f:layout>
+				<f:ColumnLayout
+					columnsM="2"
+					columnsL="3"
+					columnsXL="4"
+				/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement label="BookId">
+							<f:fields>
+								<Input value="{form>/BookId}" id="BookId" change="onInputChange" name="BookId"/>
+							</f:fields>
+						</f:FormElement>
+			<f:FormElement label="BookTitle">
+							<f:fields>
+								<Input value="{form>/BookTitle}" id="BookTitle" change="onInputChange" name="BookTitle"/>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Author">
+							<f:fields>
+								<Input value="{form>/Author}" change="onInputChange" name="Author" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="TotalCopies">
+							<f:fields>
+								<Input value="{form>/TotalCopies}" change="onInputChange" name="TotalCopies"/>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Available Copies">
+							<f:fields>
+								<Input value="{form>/AvailableCopies}" change="onInputChange" name="AvailableCopies" />
+							</f:fields>
+						</f:FormElement>
+					
+				
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+	</VBox>
+  <footer >
     <Toolbar>
       <ToolbarSpacer />
       <Button text="Cancel" type="Reject" press="onCancelPress" />
@@ -40,4 +62,4 @@
     </Toolbar>
   </footer>
   </Page>
-</mvc:View>
+</core:FragmentDefinition>

@@ -146,6 +146,20 @@
           "target": [
             "TargetBook"
           ]
+        },
+        {
+          "name": "CreateStudent",
+          "pattern": "CreateStudent",
+          "target": [
+            "TargetStudent"
+          ]
+        },
+        {
+          "name":"EditPage",
+          "pattern":"EditPage",
+          "target":[
+            "EditPageTarget"
+          ]
         }
       ],
       "targets": {
@@ -168,7 +182,15 @@
         "TargetBook" : {
            "id": "CreateBook",
           "name": "CreateBook" 
-        }
+        },
+        "TargetStudent" : {
+          "id": "CreateStudent",
+         "name": "CreateStudent" 
+       },
+       "EditPageTarget" : {
+        "id": "EditPage",
+       "name": "EditPage" 
+     }
       }
     },
     "rootView": {
