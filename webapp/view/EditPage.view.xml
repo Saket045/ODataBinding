@@ -1,14 +1,50 @@
-<mvc:View
-	xmlns="sap.m"
-	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:plugins="sap.m.plugins"
-	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
-	xmlns:smartTable="sap.ui.comp.smarttable"
-	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
-	controllerName="library.controller.EditPage"
+    <mvc:View 
+    xmlns:smartmultiedit="sap.ui.comp.smartmultiedit" 
+    xmlns:smartform="sap.ui.comp.smartform"
     height="100%"
-	xmlns:table="sap.ui.table">
-
-
-<Input />
-    </mvc:View>
+    controllerName="library.controller.EditPage"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:smartForm="sap.ui.comp.smartform"
+    xmlns:smartField="sap.ui.comp.smartfield"
+    xmlns="sap.m">
+    <Page
+        id="page"
+        showHeader="true" >
+        <customHeader>
+            <Bar>
+                <contentRight>
+                    <Button id="edit" text="Edit"  press="handleEditPress" />
+                    <Button id="save" text="Save" type="Emphasized" visible="false" press="handleSavePress" />
+                    <Button id="cancel" text="Cancel" visible="false" press="handleCancelPress" />
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <smartform:SmartForm
+        id="smartFormBookDetails"
+          editable="false"
+        title=" Book Details"
+        validationMode="Async"
+        >
+        <smartform:layout>
+        <smartform:ColumnLayout columnsM="2" columnsL="3" columnsXL="4" >
+        </smartform:ColumnLayout></smartform:layout>
+<smartform:Group  title="Book Details">
+<smartform:GroupElement label="Book ID">
+        <smartField:SmartField value="{BookId}"></smartField:SmartField>
+            </smartform:GroupElement>
+<smartForm:GroupElement label="BookTitle">
+                <smartField:SmartField value="{BookTitle}" />
+            </smartForm:GroupElement>
+            <smartForm:GroupElement label="Author">
+                <smartField:SmartField value="{Author}" />
+            </smartForm:GroupElement>
+            <smartForm:GroupElement label="TotalCopies">
+                <smartField:SmartField value="{TotalCopies}" />
+            </smartForm:GroupElement>
+            <smartForm:GroupElement label="AvailableCopies">
+                <smartField:SmartField value="{AvailableCopies}" />
+            </smartForm:GroupElement>
+</smartform:Group>
+        </smartform:SmartForm>
+    </Page>
+</mvc:View>

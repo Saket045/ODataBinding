@@ -1,6 +1,7 @@
 import Controller from "sap/ui/core/mvc/Controller";
 import ODataModel from "sap/ui/model/odata/v2/ODataModel";
 import MessageToast from "sap/m/MessageToast";
+import JSONModel from "sap/ui/model/json/JSONModel";
 /**
  * @namespace library.controller
  */
@@ -127,5 +128,22 @@ async onDeletePress(): Promise<void> {
       MessageToast.show("Delete operation failed")
     }
   }
+
+public onEditPage(oEvent:any) : void{
+  // const row = oEvent.getSource().getParent().getParent();
+  // let context = row.getBindingContext()
+  // console.log(context);
+  // let rowData = context.getObject();
+  // console.log(rowData);
+  const row = oEvent.getSource().getParent().getParent();
+  let sPath = row.getBindingContext().sPath;
+  let newModel = new JSONModel();
+  newModel.setProperty("/newPath",sPath);
+  (this.getOwnerComponent() as any).setModel(newModel,"newModel"); 
+  console.log(newModel.getProperty("/newPath"));
+  const owner = this.getOwnerComponent() as any;
+        const router = owner.getRouter();
+        router.navTo("EditPage");
+}
 
 }
